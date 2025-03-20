@@ -79,3 +79,7 @@ body {
         width: 30%; /* Three columns on desktop */
     }
 }
+
+.header{
+    text-align: center;
+}

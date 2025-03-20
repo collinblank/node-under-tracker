@@ -1,0 +1,272 @@
+[
+  {
+    "home_team": "Louisville Cardinals",
+    "away_team": "Creighton Bluejays",
+    "pregame_line": 145.5,
+    "commence_time": "2025-03-20T17:31:01Z"
+  },  
+  {
+    "home_team": "Purdue Boilermakers",
+    "away_team": "High Point Panthers",
+    "pregame_line": 156.5,
+    "commence_time": "2025-03-20T17:31:01Z"
+  },  
+  {
+    "home_team": "Wisconsin Badgers",
+    "away_team": "Montana Grizzlies",
+    "pregame_line": 151.5,
+    "commence_time": "2025-03-20T17:31:01Z"
+  },
+  {
+    "home_team": "Houston Cougars",
+    "away_team": "SIU-Edwardsville Cougars",
+    "pregame_line": 126.5,
+    "commence_time": "2025-03-20T18:00:43Z"
+  },
+  {
+    "home_team": "Auburn Tigers",
+    "away_team": "Alabama St Hornets",
+    "pregame_line": 145.5,
+    "commence_time": "2025-03-20T18:59:00Z"
+  },
+  {
+    "home_team": "Clemson Tigers",
+    "away_team": "McNeese Cowboys",
+    "pregame_line": 134.5,
+    "commence_time": "2025-03-20T19:22:00Z"
+  },
+  {
+    "home_team": "BYU Cougars",
+    "away_team": "VCU Rams",
+    "pregame_line": 146.5,
+    "commence_time": "2025-03-20T20:05:00Z"
+  },
+  {
+    "home_team": "Gonzaga Bulldogs",
+    "away_team": "Georgia Bulldogs",
+    "pregame_line": 151.5,
+    "commence_time": "2025-03-20T20:35:00Z"
+  },
+  {
+    "home_team": "Tennessee Volunteers",
+    "away_team": "Wofford Terriers",
+    "pregame_line": 132.5,
+    "commence_time": "2025-03-20T22:50:00Z"
+  },
+  {
+    "home_team": "Kansas Jayhawks",
+    "away_team": "Arkansas Razorbacks",
+    "pregame_line": 146.5,
+    "commence_time": "2025-03-20T23:10:00Z"
+  },
+  {
+    "home_team": "Texas A&M Aggies",
+    "away_team": "Yale Bulldogs",
+    "pregame_line": 140.5,
+    "commence_time": "2025-03-20T23:25:00Z"
+  },
+  {
+    "home_team": "Missouri Tigers",
+    "away_team": "Drake Bulldogs",
+    "pregame_line": 133.5,
+    "commence_time": "2025-03-20T23:35:00Z"
+  },
+  {
+    "home_team": "UCLA Bruins",
+    "away_team": "Utah State Aggies",
+    "pregame_line": 145.5,
+    "commence_time": "2025-03-21T01:25:00Z"
+  },
+  {
+    "home_team": "St. John's Red Storm",
+    "away_team": "Omaha Mavericks",
+    "pregame_line": 147.5,
+    "commence_time": "2025-03-21T01:45:00Z"
+  },
+  {
+    "home_team": "Michigan Wolverines",
+    "away_team": "UC San Diego Tritons",
+    "pregame_line": 142.5,
+    "commence_time": "2025-03-21T02:00:00Z"
+  },
+  {
+    "home_team": "Texas Tech Red Raiders",
+    "away_team": "UNC Wilmington Seahawks",
+    "pregame_line": 143.5,
+    "commence_time": "2025-03-21T02:10:00Z"
+  },
+  {
+    "home_team": "Mississippi St Bulldogs",
+    "away_team": "Baylor Bears",
+    "pregame_line": 144.5,
+    "commence_time": "2025-03-21T16:15:00Z"
+  },
+  {
+    "home_team": "Alabama Crimson Tide",
+    "away_team": "Robert Morris Colonials",
+    "pregame_line": 166.5,
+    "commence_time": "2025-03-21T16:40:00Z"
+  },
+  {
+    "home_team": "Iowa State Cyclones",
+    "away_team": "Lipscomb Bisons",
+    "pregame_line": 142.5,
+    "commence_time": "2025-03-21T17:30:00Z"
+  },
+  {
+    "home_team": "Memphis Tigers",
+    "away_team": "Colorado St Rams",
+    "pregame_line": 147.5,
+    "commence_time": "2025-03-21T18:00:00Z"
+  },
+  {
+    "home_team": "Duke Blue Devils",
+    "away_team": "Mt. St. Mary's Mountaineers",
+    "pregame_line": 140.5,
+    "commence_time": "2025-03-21T18:50:00Z"
+  },
+  {
+    "home_team": "Saint Mary's Gaels",
+    "away_team": "Vanderbilt Commodores",
+    "pregame_line": 135.5,
+    "commence_time": "2025-03-21T19:15:00Z"
+  },
+  {
+    "home_team": "Ole Miss Rebels",
+    "away_team": "North Carolina Tar Heels",
+    "pregame_line": 155.5,
+    "commence_time": "2025-03-21T20:05:00Z"
+  },
+  {
+    "home_team": "Maryland Terrapins",
+    "away_team": "Grand Canyon Antelopes",
+    "pregame_line": 149.5,
+    "commence_time": "2025-03-21T20:35:00Z"
+  },
+  {
+    "home_team": "Florida Gators",
+    "away_team": "Norfolk St Spartans",
+    "pregame_line": 153.5,
+    "commence_time": "2025-03-21T22:50:00Z"
+  },
+  {
+    "home_team": "Kentucky Wildcats",
+    "away_team": "Troy Trojans",
+    "pregame_line": 151.5,
+    "commence_time": "2025-03-21T23:10:00Z"
+  },
+  {
+    "home_team": "Marquette Golden Eagles",
+    "away_team": "New Mexico Lobos",
+    "pregame_line": 152.5,
+    "commence_time": "2025-03-21T23:25:00Z"
+  },
+  {
+    "home_team": "Arizona Wildcats",
+    "away_team": "Akron Zips",
+    "pregame_line": 166.5,
+    "commence_time": "2025-03-21T23:35:00Z"
+  },
+  {
+    "home_team": "UConn Huskies",
+    "away_team": "Oklahoma Sooners",
+    "pregame_line": 148.5,
+    "commence_time": "2025-03-22T01:25:00Z"
+  },
+  {
+    "home_team": "Illinois Fighting Illini",
+    "away_team": "Xavier Musketeers",
+    "pregame_line": 159.5,
+    "commence_time": "2025-03-22T01:45:00Z"
+  },
+  {
+    "home_team": "Michigan St Spartans",
+    "away_team": "Bryant Bulldogs",
+    "pregame_line": 152.5,
+    "commence_time": "2025-03-22T02:00:00Z"
+  },
+  {
+    "home_team": "Oregon Ducks",
+    "away_team": "Liberty Flames",
+    "pregame_line": 139.5,
+    "commence_time": "2025-03-22T02:10:00Z"
+  },
+  {
+    "home_team": "Chattanooga Mocs",
+    "away_team": "Dayton Flyers",
+    "pregame_line": 148.5,
+    "commence_time": "2025-03-22T15:30:00Z"
+  },
+  {
+    "home_team": "George Mason Patriots",
+    "away_team": "Bradley Braves",
+    "pregame_line": 130.5,
+    "commence_time": "2025-03-22T18:00:00Z"
+  },
+  {
+    "home_team": "Auburn Tigers",
+    "away_team": "Creighton Bluejays",
+    "pregame_line": 150.5,
+    "commence_time": "2025-03-22T21:15:40Z"
+  },
+  {
+    "home_team": "Incarnate Word Cardinals",
+    "away_team": "Manhattan Jaspers",
+    "pregame_line": 144,
+    "commence_time": "2025-03-23T16:00:00Z"
+  },
+  {
+    "home_team": "Army Knights",
+    "away_team": "Elon Phoenix",
+    "pregame_line": 146,
+    "commence_time": "2025-03-23T18:30:00Z"
+  },
+  {
+    "home_team": "SMU Mustangs",
+    "away_team": "Oklahoma St Cowboys",
+    "pregame_line": 153.5,
+    "commence_time": "2025-03-23T19:00:00Z"
+  },
+  {
+    "home_team": "Northern Arizona Lumberjacks",
+    "away_team": "Queens University Royals",
+    "pregame_line": 149,
+    "commence_time": "2025-03-23T21:00:00Z"
+  },
+  {
+    "home_team": "North Texas Mean Green",
+    "away_team": "Arkansas St Red Wolves",
+    "pregame_line": 145.5,
+    "commence_time": "2025-03-23T23:00:00Z"
+  },
+  {
+    "home_team": "Presbyterian Blue Hose",
+    "away_team": "Illinois St Redbirds",
+    "pregame_line": 139.5,
+    "commence_time": "2025-03-23T23:00:00Z"
+  },
+  {
+    "home_team": "San Francisco Dons",
+    "away_team": "Loyola (Chi) Ramblers",
+    "pregame_line": 143.5,
+    "commence_time": "2025-03-23T23:00:00Z"
+  },
+  {
+    "home_team": "UC Irvine Anteaters",
+    "away_team": "Jacksonville St Gamecocks",
+    "pregame_line": 138,
+    "commence_time": "2025-03-24T01:00:00Z"
+  },
+  {
+    "home_team": "Stanford Cardinal",
+    "away_team": "Kent State Golden Flashes",
+    "pregame_line": 140.5,
+    "commence_time": "2025-03-24T01:00:00Z"
+  },
+  {
+    "home_team": "Santa Clara Broncos",
+    "away_team": "UAB Blazers",
+    "pregame_line": 165,
+    "commence_time": "2025-03-24T01:00:00Z"
+  }
+]
