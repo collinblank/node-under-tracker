@@ -7,7 +7,13 @@ app.use(express.static(__dirname));
 
 app.get("/scores", async (req, res) => {
     try {
-        const apiUrl = "https://ncaa-api.henrygd.me/scoreboard/basketball-men/d1/2025/03/19";
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+        const dateString = `${year}/${month}/${day}`;
+
+        const apiUrl = `https://ncaa-api.henrygd.me/scoreboard/basketball-men/d1/${dateString}`;
         const response = await axios.get(apiUrl);
         res.json(response.data);
     } catch (error) {

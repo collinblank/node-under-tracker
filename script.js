@@ -24,13 +24,11 @@ function fetchLiveScores() {
                 let totalPoints = Number(homeScore) + Number(awayScore);
                 let minutes = Number(timeParts[0]);
                 let seconds = Number(timeParts[1]);
-                console.log(minutes);
-                console.log(live);
-                if (minutes == 0 && live == 'final'){
+                if (live == 'final'){
                 let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="final">FINAL</div><div id="totalPoints">${totalPoints}</div></br>`
                 document.getElementById("games").innerHTML += gameInfo;
-                }else if(minutes == 0 && live == 'pre'){
-                    let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="final">Starting Soon</div><div id="totalPoints">${totalPoints}</div></br>`
+                }else if(live == 'pre'){
+                    let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="final">Starting Soon</div></br>`
                     document.getElementById("games").innerHTML += gameInfo;
                 }else{
                 if (half == "1ST HALF"){
@@ -42,13 +40,11 @@ function fetchLiveScores() {
                 }
                 let timeTotal = 40 - timePlayed;
                 let averagePerMinute = totalPoints / timePlayed
-                console.log(averagePerMinute);
-                console.log(totalPoints);
                 let currentPace = averagePerMinute * timeTotal + totalPoints;
                 let roundedPace = currentPace.toFixed(2);
 
                 let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="point-total">${totalPoints}</div><div id="pace">Pace: ${roundedPace}</div></br>`;
-                document.getElementById("game-matchup").innerHTML += gameInfo;
+                document.getElementById("games").innerHTML += gameInfo;
                 }
             })
         })
