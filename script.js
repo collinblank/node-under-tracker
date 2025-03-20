@@ -58,12 +58,10 @@ function fetchLiveScores() {
 }
 
 function fetchLiveLines(shortName) {
-    return fetch(`http://localhost:3000/closing-lines?team=${encodeURIComponent(shortName)}`)
+    return fetch(`/closing-lines?team=${encodeURIComponent(shortName)}`) 
         .then(response => {
             if (!response.ok) throw new Error("Failed to fetch saved odds");
             return response.json();
         })
-        .then(odds => {
-            return odds; // Returns saved game object
-        });
+        .then(odds => odds);
 }
