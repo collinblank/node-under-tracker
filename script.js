@@ -12,11 +12,11 @@ function fetchLiveScores() {
             myObj = data.games;
             let bracketGames = myObj.filter(game => game.game.bracketRound != "");
             bracketGames.sort((a, b) => {
-                let statusOrder = { "2ND HALF": 2, "1ST HALF": 1, "FINAL": 0};
-                let aStatus = statusOrder[a.game.currentPeriod] || 0;
-                let bStatus = statusOrder[b.game.currentPeriod] || 0;
+                let statusOrder = { "live": 2, "pre": 1, "final": 0 };
+                let aStatus = statusOrder[a.game?.gameState] || 0;
+                let bStatus = statusOrder[b.game?.gameState] || 0;
                 return bStatus - aStatus;
-            })
+            });
             bracketGames.forEach(game => {
                 let homeTeam = game.game.home.names.short;
                 let awayTeam = game.game.away.names.short;
