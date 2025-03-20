@@ -24,7 +24,15 @@ function fetchLiveScores() {
                 let totalPoints = Number(homeScore) + Number(awayScore);
                 let minutes = Number(timeParts[0]);
                 let seconds = Number(timeParts[1]);
-                console.log(timeParts);
+                console.log(minutes);
+                console.log(live);
+                if (minutes == 0 && live == 'final'){
+                let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="final">FINAL</div><div id="totalPoints">${totalPoints}</div></br>`
+                document.getElementById("games").innerHTML += gameInfo;
+                }else if(minutes == 0 && live == 'pre'){
+                    let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="final">Starting Soon</div><div id="totalPoints">${totalPoints}</div></br>`
+                    document.getElementById("games").innerHTML += gameInfo;
+                }else{
                 if (half == "1ST HALF"){
                     timeLeft = minutes + seconds/60
                     timePlayed = 20 - timeLeft;
@@ -41,10 +49,7 @@ function fetchLiveScores() {
 
                 let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="point-total">${totalPoints}</div><div id="pace">Pace: ${roundedPace}</div></br>`;
                 document.getElementById("game-matchup").innerHTML += gameInfo;
-                // console.log(`Home Team: ${homeTeam}, Home Score: ${homeScore}, 
-                //     Away Team: ${awayScore}, Away Score: ${awayTeam}, 
-                //     Time Remaining: ${timeLeft}, Current Half: ${half}`
-                //     );
+                }
             })
         })
         .catch(error => {
