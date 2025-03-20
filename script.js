@@ -1,5 +1,5 @@
 function fetchLiveScores() {
-    const url = "http://localhost:3000/scores";
+    const url = "/scores";
     
     fetch(url)
         .then(response => {
