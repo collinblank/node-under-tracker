@@ -22,14 +22,18 @@ function fetchLiveScores() {
                 let totalPoints = Number(homeScore) + Number(awayScore);
                 let minutes = Number(timeParts[0]);
                 let seconds = Number(timeParts[1]);
-        
+                console.log(half);
                 if (live == "final") {
                     let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">FINAL</div><div class="totalPoints">${totalPoints}</div></div>`;
                     document.getElementById("games").innerHTML += gameInfo;
                 } else if (live == "pre") {
                     let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">Starting Soon</div></div>`;
                     document.getElementById("games").innerHTML += gameInfo;
-                } else {
+                } else if (!half){
+                    let currentPace = totalPoints * 2;
+                    let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">HALF</div><div class="totalPoints">${totalPoints}</div><div class="pace">Pace: ${currentPace}</div></div>`;
+                    document.getElementById("games").innerHTML += gameInfo;
+                }else {
                     let timeLeft = half == "1ST HALF" ? minutes + seconds / 60 : minutes + seconds / 60;
                     let timePlayed = half == "1ST HALF" ? 20 - timeLeft : 20 + (20 - timeLeft);
                     let timeTotal = 40 - timePlayed;
@@ -37,7 +41,7 @@ function fetchLiveScores() {
                     let currentPace = averagePerMinute * timeTotal + totalPoints;
                     let roundedPace = currentPace.toFixed(2);
         
-                    let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="point-total">${totalPoints}</div><div class="pace">Pace: ${roundedPace}</div></div>`;
+                    let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">${half}</div><div class="point-total">${totalPoints}</div><div class="pace">Pace: ${roundedPace}</div></div>`;
                     document.getElementById("games").innerHTML += gameInfo;
                 }
             });
