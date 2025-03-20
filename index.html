@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="style.css">
     <title>Under Tracker</title>
 </head>
-<body>
+<body onload="fetchLiveScores()">
+    <h1>Live Scores</h1>
     <ul id="game-list">
-        <button onclick="fetchLiveScores()">Get Live Scores</button>
         <div id="games"></div>
         
     </ul>

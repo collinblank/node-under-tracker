@@ -10,9 +10,7 @@ function fetchLiveScores() {
         })
         .then(data => {
             myObj = data.games;
-            let bracketGames = myObj.filter(game => {
-                return game.game.bracketRound != "";
-            });
+            let bracketGames = myObj.filter(game => game.game.bracketRound != "");
             bracketGames.forEach(game => {
                 let homeTeam = game.game.home.names.full;
                 let awayTeam = game.game.away.names.full;
@@ -24,29 +22,25 @@ function fetchLiveScores() {
                 let totalPoints = Number(homeScore) + Number(awayScore);
                 let minutes = Number(timeParts[0]);
                 let seconds = Number(timeParts[1]);
-                if (live == 'final'){
-                let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="final">FINAL</div><div id="totalPoints">${totalPoints}</div></br>`
-                document.getElementById("games").innerHTML += gameInfo;
-                }else if(live == 'pre'){
-                    let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="final">Starting Soon</div></br>`
+        
+                if (live == "final") {
+                    let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">FINAL</div><div class="totalPoints">${totalPoints}</div></div>`;
                     document.getElementById("games").innerHTML += gameInfo;
-                }else{
-                if (half == "1ST HALF"){
-                    timeLeft = minutes + seconds/60
-                    timePlayed = 20 - timeLeft;
-                } else if (half == "2ND HALF"){
-                    timeLeft = minutes + seconds/60
-                    timePlayed = 20 + (20 - timeLeft)
+                } else if (live == "pre") {
+                    let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">Starting Soon</div></div>`;
+                    document.getElementById("games").innerHTML += gameInfo;
+                } else {
+                    let timeLeft = half == "1ST HALF" ? minutes + seconds / 60 : minutes + seconds / 60;
+                    let timePlayed = half == "1ST HALF" ? 20 - timeLeft : 20 + (20 - timeLeft);
+                    let timeTotal = 40 - timePlayed;
+                    let averagePerMinute = totalPoints / timePlayed;
+                    let currentPace = averagePerMinute * timeTotal + totalPoints;
+                    let roundedPace = currentPace.toFixed(2);
+        
+                    let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="point-total">${totalPoints}</div><div class="pace">Pace: ${roundedPace}</div></div>`;
+                    document.getElementById("games").innerHTML += gameInfo;
                 }
-                let timeTotal = 40 - timePlayed;
-                let averagePerMinute = totalPoints / timePlayed
-                let currentPace = averagePerMinute * timeTotal + totalPoints;
-                let roundedPace = currentPace.toFixed(2);
-
-                let gameInfo = `<div id="game-matchup"><div id="home-team">${homeTeam}</div> <div class="score">${homeScore}</div><div id="away-team">${awayTeam}</div> <div class="score">${awayScore}</div></div></br><div id="point-total">${totalPoints}</div><div id="pace">Pace: ${roundedPace}</div></br>`;
-                document.getElementById("games").innerHTML += gameInfo;
-                }
-            })
+            });
         })
         .catch(error => {
             console.error("Error:", error);
