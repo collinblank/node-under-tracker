@@ -11,8 +11,14 @@ function fetchLiveScores() {
         .then(data => {
             myObj = data.games;
             let bracketGames = myObj.filter(game => game.game.bracketRound != "");
+            bracketGames.sort((a, b) => {
+                let statusOrder = { "2ND HALF": 2, "1ST HALF": 1, "FINAL": 0};
+                let aStatus = statusOrder[a.game.currentPeriod] || 0;
+                let bStatus = statusOrder[b.game.currentPeriod] || 0;
+                return bStatus - aStatus;
+            })
             bracketGames.forEach(game => {
-                let homeTeam = game.game.home.names.short; // "Purdue"
+                let homeTeam = game.game.home.names.short;
                 let awayTeam = game.game.away.names.short;
                 let awayScore = game.game.away.score;
                 let homeScore = game.game.home.score;
@@ -25,7 +31,7 @@ function fetchLiveScores() {
                 let timeRemaining = game.game.contestClock;
 
                 fetchLiveLines(homeTeam).then(odds => {
-                    let closingLine = odds.pregame_line || "N/A"; // Use saved pre-game line
+                    let closingLine = odds.pregame_line || "N/A";
                     let gameInfo;
 
                     if (live == "final") {
