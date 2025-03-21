@@ -9,9 +9,10 @@ app.use(express.static(__dirname));
 app.get("/scores", async (req, res) => {
     try {
         const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, "0");
-        const day = String(today.getDate()).padStart(2, "0");
+        const pacificTime = new Date(today.getTime() - 7 * 60 * 60 * 1000);
+        const year = pacificTime.getUTCFullYear(); // Use UTC methods after offset
+        const month = String(pacificTime.getUTCMonth() + 1).padStart(2, "0");
+        const day = String(pacificTime.getUTCDate()).padStart(2, "0");
         const dateString = `${year}/${month}/${day}`;
         const apiUrl = `https://ncaa-api.henrygd.me/scoreboard/basketball-men/d1/${dateString}`;
         const response = await axios.get(apiUrl);
