@@ -96,3 +96,11 @@ body {
 .header{
     text-align: center;
 }
+
+.win{
+    border: 2px solid #90ee90;
+}
+
+.loss{
+    border: 2px solid #d32f2f;
+}

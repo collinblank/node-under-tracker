@@ -140,7 +140,7 @@
   {
     "home_team": "Maryland Terrapins",
     "away_team": "Grand Canyon Antelopes",
-    "pregame_line": 149.5,
+    "pregame_line": 150.5,
     "commence_time": "2025-03-21T20:35:00Z"
   },
   {
@@ -176,7 +176,7 @@
   {
     "home_team": "Illinois Fighting Illini",
     "away_team": "Xavier Musketeers",
-    "pregame_line": 159.5,
+    "pregame_line": 160.5,
     "commence_time": "2025-03-22T01:45:00Z"
   },
   {
@@ -192,81 +192,9 @@
     "commence_time": "2025-03-22T02:10:00Z"
   },
   {
-    "home_team": "Chattanooga Mocs",
-    "away_team": "Dayton Flyers",
-    "pregame_line": 148.5,
-    "commence_time": "2025-03-22T15:30:00Z"
-  },
-  {
-    "home_team": "George Mason Patriots",
-    "away_team": "Bradley Braves",
-    "pregame_line": 130.5,
-    "commence_time": "2025-03-22T18:00:00Z"
-  },
-  {
     "home_team": "Auburn Tigers",
     "away_team": "Creighton Bluejays",
     "pregame_line": 150.5,
     "commence_time": "2025-03-22T21:15:40Z"
-  },
-  {
-    "home_team": "Incarnate Word Cardinals",
-    "away_team": "Manhattan Jaspers",
-    "pregame_line": 144,
-    "commence_time": "2025-03-23T16:00:00Z"
-  },
-  {
-    "home_team": "Army Knights",
-    "away_team": "Elon Phoenix",
-    "pregame_line": 146,
-    "commence_time": "2025-03-23T18:30:00Z"
-  },
-  {
-    "home_team": "SMU Mustangs",
-    "away_team": "Oklahoma St Cowboys",
-    "pregame_line": 153.5,
-    "commence_time": "2025-03-23T19:00:00Z"
-  },
-  {
-    "home_team": "Northern Arizona Lumberjacks",
-    "away_team": "Queens University Royals",
-    "pregame_line": 149,
-    "commence_time": "2025-03-23T21:00:00Z"
-  },
-  {
-    "home_team": "North Texas Mean Green",
-    "away_team": "Arkansas St Red Wolves",
-    "pregame_line": 145.5,
-    "commence_time": "2025-03-23T23:00:00Z"
-  },
-  {
-    "home_team": "Presbyterian Blue Hose",
-    "away_team": "Illinois St Redbirds",
-    "pregame_line": 139.5,
-    "commence_time": "2025-03-23T23:00:00Z"
-  },
-  {
-    "home_team": "San Francisco Dons",
-    "away_team": "Loyola (Chi) Ramblers",
-    "pregame_line": 143.5,
-    "commence_time": "2025-03-23T23:00:00Z"
-  },
-  {
-    "home_team": "UC Irvine Anteaters",
-    "away_team": "Jacksonville St Gamecocks",
-    "pregame_line": 138,
-    "commence_time": "2025-03-24T01:00:00Z"
-  },
-  {
-    "home_team": "Stanford Cardinal",
-    "away_team": "Kent State Golden Flashes",
-    "pregame_line": 140.5,
-    "commence_time": "2025-03-24T01:00:00Z"
-  },
-  {
-    "home_team": "Santa Clara Broncos",
-    "away_team": "UAB Blazers",
-    "pregame_line": 165,
-    "commence_time": "2025-03-24T01:00:00Z"
   }
 ]

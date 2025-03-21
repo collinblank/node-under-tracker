@@ -23,14 +23,28 @@ function fetchLiveScores() {
                 let minutes = Number(timeParts[0]);
                 let seconds = Number(timeParts[1]);
                 let timeRemaining = game.game.contestClock;
+                let gameId = game.game.gameID;
 
-                fetchLiveLines(homeTeam).then(odds => {
+                fetchLiveLines(homeTeam)
+                .then(odds => {
+                    if(!odds.pregame_line) {
+                        return fetchLiveLines(awayTeam);
+                    }
+                    return odds;
+                })
+                .then(odds=> {
                     let closingLine = odds.pregame_line || "N/A";
                     let gameInfo;
+                    console.log(typeof(closingLine));
 
                     if (live == "final") {
-                        gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">FINAL</div><div class="totalPoints">${totalPoints}</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
+                        gameInfo = `<div class="game-details" id="${gameId}"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">FINAL</div><div class="totalPoints">${totalPoints}</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
                         document.getElementById("finals").innerHTML += gameInfo;
+                        if (closingLine > totalPoints){
+                            document.getElementById(`${gameId}`).classList.add("win");
+                        } else {
+                            document.getElementById(`${gameId}`).classList.add("loss")
+                        }
                     } else if (live == "pre") {
                         gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">Starting Soon</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
                         document.getElementById("not-started").innerHTML += gameInfo;
