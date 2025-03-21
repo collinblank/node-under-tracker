@@ -11,12 +11,6 @@ function fetchLiveScores() {
         .then(data => {
             myObj = data.games;
             let bracketGames = myObj.filter(game => game.game.bracketRound != "");
-            bracketGames.sort((a, b) => {
-                let statusOrder = { "live": 2, "pre": 1, "final": 0 };
-                let aStatus = statusOrder[a.game?.gameState] || 0;
-                let bStatus = statusOrder[b.game?.gameState] || 0;
-                return bStatus - aStatus;
-            });
             bracketGames.forEach(game => {
                 let homeTeam = game.game.home.names.short;
                 let awayTeam = game.game.away.names.short;
@@ -36,11 +30,14 @@ function fetchLiveScores() {
 
                     if (live == "final") {
                         gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">FINAL</div><div class="totalPoints">${totalPoints}</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
+                        document.getElementById("finals").innerHTML += gameInfo;
                     } else if (live == "pre") {
                         gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">Starting Soon</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
+                        document.getElementById("not-started").innerHTML += gameInfo;
                     } else if (!half) {
                         let currentPace = totalPoints * 2;
                         gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">HALF</div><div class="totalPoints">${totalPoints}</div><div class="pace">Pace: ${currentPace}</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
+                        document.getElementById("games").innerHTML += gameInfo;
                     } else {
                         let timeLeft = half == "1ST HALF" ? minutes + seconds / 60 : minutes + seconds / 60;
                         let timePlayed = half == "1ST HALF" ? 20 - timeLeft : 20 + (20 - timeLeft);
@@ -49,8 +46,8 @@ function fetchLiveScores() {
                         let currentPace = averagePerMinute * timeTotal + totalPoints;
                         let roundedPace = currentPace.toFixed(2);
                         gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">${half} | ${timeRemaining}</div><div class="point-total">${totalPoints}</div><div class="pace">Pace: ${roundedPace}</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
+                        document.getElementById("games").innerHTML += gameInfo;
                     }
-                    document.getElementById("games").innerHTML += gameInfo;
                 }).catch(error => {
                     console.error(`Error fetching lines for ${homeTeam}:`, error);
                     let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">${half || live}</div><div class="totalPoints">${totalPoints}</div></div>`;
