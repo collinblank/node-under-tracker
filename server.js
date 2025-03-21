@@ -28,9 +28,12 @@ app.get("/closing-lines", async (req, res) => {
     try {
         const data = await fs.readFile(path.join(__dirname, "pregame_lines.json"), "utf8");
         const odds = JSON.parse(data);
-        const matchedGame = odds.find(odd => 
-            odd.home_team.includes(team) || odd.away_team.includes(team)
-        );
+        const matchedGame = odds.find(odd => {
+            const homeSchool = odd.home_team; 
+            const awaySchool = odd.away_team; 
+                return homeSchool === team || awaySchool === team; 
+    });
+    console.log(`Queried ${team}, matched:`, matchedGame);
         res.json(matchedGame || {});
     } catch (error) {
         console.error("Closing lines error:", error);
