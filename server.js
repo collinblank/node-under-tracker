@@ -33,7 +33,6 @@ app.get("/closing-lines", async (req, res) => {
             const awaySchool = odd.away_team; 
                 return homeSchool === team || awaySchool === team; 
     });
-    console.log(`Queried ${team}, matched:`, matchedGame);
         res.json(matchedGame || {});
     } catch (error) {
         console.error("Closing lines error:", error);

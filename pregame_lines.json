@@ -1,104 +1,50 @@
 [
   {
-    "home_team": "Mississippi St",
-    "away_team": "Baylor",
-    "pregame_line": 144.5,
+    "home_team": "Purdue",
+    "away_team": "McNeese",
+    "pregame_line": 143.5,
     "commence_time": "2025-03-21T16:15:00Z"
   },
   {
-    "home_team": "Alabama",
-    "away_team": "Robert Morris",
-    "pregame_line": 166.5,
+    "home_team": "Creighton",
+    "away_team": "Auburn",
+    "pregame_line": 150.5,
     "commence_time": "2025-03-21T16:40:00Z"
   },
   {
-    "home_team": "Iowa State",
-    "away_team": "Lipscomb",
-    "pregame_line": 142.5,
+    "home_team": "Gonzaga",
+    "away_team": "Houston",
+    "pregame_line": 139.5,
     "commence_time": "2025-03-21T17:30:00Z"
   },
   {
-    "home_team": "Memphis",
-    "away_team": "Colorado St",
-    "pregame_line": 147.5,
+    "home_team": "Drake",
+    "away_team": "Texas Tech",
+    "pregame_line": 127.5,
     "commence_time": "2025-03-21T18:00:00Z"
   },
   {
-    "home_team": "Duke",
-    "away_team": "Mt. St. Mary's",
-    "pregame_line": 140.5,
+    "home_team": "Arkansas",
+    "away_team": "St. Johns",
+    "pregame_line": 144.5,
     "commence_time": "2025-03-21T18:50:00Z"
   },
   {
-    "home_team": "Saint Mary's",
-    "away_team": "Vanderbilt",
-    "pregame_line": 135.5,
+    "home_team": "BYU",
+    "away_team": "Wisconsin",
+    "pregame_line": 154.5,
     "commence_time": "2025-03-21T19:15:00Z"
   },
   {
-    "home_team": "Ole Miss",
-    "away_team": "North Carolina",
-    "pregame_line": 155.5,
+    "home_team": "UCLA",
+    "away_team": "Tennessee",
+    "pregame_line": 131.5,
     "commence_time": "2025-03-21T20:05:00Z"
 },
   {
-    "home_team": "Maryland",
-    "away_team": "Grand Canyon",
-    "pregame_line": 150.5,
+    "home_team": "Michigan",
+    "away_team": "Texas A&M",
+    "pregame_line": 141.5,
     "commence_time": "2025-03-21T20:35:00Z"
-  },
-  {
-    "home_team": "Florida",
-    "away_team": "Norfolk St",
-    "pregame_line": 153.5,
-    "commence_time": "2025-03-21T22:50:00Z"
-  },
-  {
-    "home_team": "Kentucky",
-    "away_team": "Troy",
-    "pregame_line": 151.5,
-    "commence_time": "2025-03-21T23:10:00Z"
-  },
-  {
-    "home_team": "Marquette",
-    "away_team": "New Mexico",
-    "pregame_line": 152.5,
-    "commence_time": "2025-03-21T23:25:00Z"
-  },
-  {
-    "home_team": "Arizona",
-    "away_team": "Akron",
-    "pregame_line": 166.5,
-    "commence_time": "2025-03-21T23:35:00Z"
-  },
-  {
-    "home_team": "UConn",
-    "away_team": "Oklahoma",
-    "pregame_line": 148.5,
-    "commence_time": "2025-03-22T01:25:00Z"
-  },
-  {
-    "home_team": "Illinois",
-    "away_team": "Xavier",
-    "pregame_line": 160.5,
-    "commence_time": "2025-03-22T01:45:00Z"
-  },
-  {
-    "home_team": "Michigan St.",
-    "away_team": "Bryant",
-    "pregame_line": 152.5,
-    "commence_time": "2025-03-22T02:00:00Z"
-  },
-  {
-    "home_team": "Oregon",
-    "away_team": "Liberty",
-    "pregame_line": 139.5,
-    "commence_time": "2025-03-22T02:10:00Z"
-  },
-  {
-    "home_team": "Auburn",
-    "away_team": "Creighton",
-    "pregame_line": 150.5,
-    "commence_time": "2025-03-22T21:15:40Z"
   }
 ]
