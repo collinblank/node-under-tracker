@@ -24,6 +24,8 @@ function fetchLiveScores() {
                 let seconds = Number(timeParts[1]);
                 let timeRemaining = game.game.contestClock;
                 let gameId = game.game.gameID;
+                let startTimeParts = game.game.startTime.split(":");
+                let startTime = Number(startTimeParts[0][1]) + ":" + startTimeParts[1];
 
                 fetchLiveLines(homeTeam)
                 .then(odds => {
@@ -46,7 +48,7 @@ function fetchLiveScores() {
                             document.getElementById(`${gameId}`).classList.add("loss")
                         }
                     } else if (live == "pre") {
-                        gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">Starting Soon</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
+                        gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">${startTime}</div><div class="closing-line">O/U: ${closingLine}</div></div>`;
                         document.getElementById("not-started").innerHTML += gameInfo;
                     } else if (!half) {
                         let currentPace = totalPoints * 2;
