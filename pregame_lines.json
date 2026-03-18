@@ -1,50 +1,16 @@
 [
   {
-    "home_team": "Purdue",
-    "away_team": "McNeese",
-    "pregame_line": 143.5,
-    "commence_time": "2025-03-21T16:15:00Z"
+    "home_team": "Lehigh",
+    "away_team": "Prairie View",
+    "pregame_line": 142.5,
+    "pregame_spread": "Lehigh -3.5",
+    "first_half_line": "65.5"
   },
   {
-    "home_team": "Creighton",
-    "away_team": "Auburn",
-    "pregame_line": 150.5,
-    "commence_time": "2025-03-21T16:40:00Z"
-  },
-  {
-    "home_team": "Gonzaga",
-    "away_team": "Houston",
-    "pregame_line": 139.5,
-    "commence_time": "2025-03-21T17:30:00Z"
-  },
-  {
-    "home_team": "Drake",
-    "away_team": "Texas Tech",
-    "pregame_line": 127.5,
-    "commence_time": "2025-03-21T18:00:00Z"
-  },
-  {
-    "home_team": "Arkansas",
-    "away_team": "St. Johns",
-    "pregame_line": 144.5,
-    "commence_time": "2025-03-21T18:50:00Z"
-  },
-  {
-    "home_team": "BYU",
-    "away_team": "Wisconsin",
-    "pregame_line": 154.5,
-    "commence_time": "2025-03-21T19:15:00Z"
-  },
-  {
-    "home_team": "UCLA",
-    "away_team": "Tennessee",
-    "pregame_line": 131.5,
-    "commence_time": "2025-03-21T20:05:00Z"
-},
-  {
-    "home_team": "Michigan",
-    "away_team": "Texas A&M",
-    "pregame_line": 141.5,
-    "commence_time": "2025-03-21T20:35:00Z"
+    "home_team": "SMU",
+    "away_team": "Miami (OH)",
+    "pregame_line": 163.5,
+    "pregame_spread": "MIAOH +7.5",
+    "first_half_line": "75.5"
   }
 ]
