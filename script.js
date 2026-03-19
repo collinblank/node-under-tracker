@@ -1,4 +1,4 @@
-const halftimeScores = {};
+let halftimeScores = JSON.parse(localStorage.getItem('halftimeScores')) || {};
 
 function fetchLiveScores() {
     const url = "/scores";
@@ -13,6 +13,17 @@ function fetchLiveScores() {
         .then(data => {
             myObj = data.games;
             let bracketGames = myObj.filter(game => game.game.bracketRound != "");
+            bracketGames.sort((a, b) => {
+                const parseTime = (timeStr) => {
+                  if (!timeStr) return 0;
+                  const [time, period] = timeStr.split(' ');
+                  let [hours, minutes] = time.split(':').map(Number);
+                  if (period === 'PM' && hours !== 12) hours += 12;
+                  if (period === 'AM' && hours === 12) hours = 0;
+                  return hours * 60 + minutes;
+                };
+                return parseTime(a.game.startTime) - parseTime(b.game.startTime);
+            });
             bracketGames.forEach(game => {
                 let homeTeam = game.game.home.names.short;
                 let awayTeam = game.game.away.names.short;
