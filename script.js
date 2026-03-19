@@ -58,24 +58,24 @@ function fetchLiveScores() {
                         gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">HALF</div><div class="totalPoints">${totalPoints}</div><div class="pace">Pace: ${currentPace}</div><div class="odds-row"><div class="closing-first">${closingFirst}</div><div class="closing-line">O/U: ${closingLine}</div><div class="closing-spread">${closingSpread}</div></div></div>`;
                         document.getElementById("games").innerHTML += gameInfo;
                     } else {
-                        let timeLeft = half == "1ST HALF" ? minutes + seconds / 60 : minutes + seconds / 60;
-                        let timePlayed = half == "1ST HALF" ? 20 - timeLeft : 20 + (20 - timeLeft);
+                        if (half == "1st"){
+                            halftimeScores[gameId] = totalPoints
+                        } else if(half == "2nd" && !halftimeScores[gameId]){
+                            halftimeScores[gameId] = "N/A";
+                        }
+                        let timeLeft = half == "1st" ? minutes + seconds / 60 : minutes + seconds / 60;
+                        let timePlayed = half == "1st" ? 20 - timeLeft : 20 + (20 - timeLeft);
                         let timeTotal = 40 - timePlayed;
                         let averagePerMinute = totalPoints / timePlayed;
                         // Full Game Pace 
                         let currentPace = averagePerMinute * timeTotal + totalPoints;
                         let roundedPace = currentPace.toFixed(2);
 
-                        // Capture halftime score when it transitions to 2nd half
-                        if (half == "2ND HALF" && !halftimeScores[gameId]) {
-                            halftimeScores[gameId] = totalPoints;
-                        }
-
                         // First Half pace
-                        let firstHalfTimeRemaining = half == "1ST HALF" ? timeLeft : 0;
-                        let firstHalfPoints = half == "1ST HALF" ? totalPoints : (halftimeScores[gameId] ?? totalPoints);
-                        let firstHalfPace = firstHalfPoints + averagePerMinute * firstHalfTimeRemaining;
-                        let rounded1HPace = firstHalfPace.toFixed(2);
+                        let firstHalfTimeRemaining = half == "1st" ? timeLeft : 0;
+                        let firstHalfPoints = half == "1st" ? totalPoints : halftimeScores[gameId];
+                        let firstHalfPace = firstHalfPoints !== "N/A" ? (firstHalfPoints + averagePerMinute * firstHalfTimeRemaining).toFixed(2) : "N/A";
+                        let rounded1HPace = firstHalfPace;
                         gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">${half} | ${timeRemaining}</div><div class="point-total">${totalPoints}</div><div class="pace">Pace: ${roundedPace}</div><div class="first-pace">1H Pace: ${rounded1HPace}</div><div class="odds-row"><div class="closing-line">O/U: ${closingLine}</div><div class="closing-spread">${closingSpread}</div><div class="closing-first">${closingFirst}</div></div></div>`;
                         document.getElementById("games").innerHTML += gameInfo;
                     }
