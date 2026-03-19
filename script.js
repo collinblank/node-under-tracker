@@ -133,21 +133,35 @@ function fetchLiveScores() {
                         let timePlayed = (half === "1st") ? 20 - timeLeft : 40 - timeLeft;
                         let averagePerMinute = timePlayed > 0 ? totalPoints / timePlayed : 0;
                         let currentPace = (averagePerMinute * 40).toFixed(2);
-                        let firstHalfPoints = halftimeScores[gameId] ?? totalPoints;
-                        let firstHalfPace = firstHalfPoints.toFixed(0);
+                        let firstHalfPace = (averagePerMinute * 20).toFixed(2);
 
-                        gameInfo = `<div class="game-details">
-                            <div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div>
-                            <div class="final">${half} | ${timeRemaining}</div>
-                            <div class="point-total">${totalPoints}</div>
-                            <div class="pace">Pace: ${currentPace}</div>
-                            <div class="first-pace">1H Pace: ${firstHalfPace}</div>
-                            <div class="odds-row">
-                                <div><div class="label">1H O/U:</div><div class="value">${closingFirst}</div></div>
-                                <div><div class="label">O/U:</div><div class="value">${closingLine}</div></div>
-                                <div><div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
-                            </div>
-                        </div>`;
+                        if (half === "1st"){
+                            gameInfo = `<div class="game-details">
+                                <div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div>
+                                <div class="final">${half} | ${timeRemaining}</div>
+                                <div class="point-total">${totalPoints}</div>
+                                <div class="pace">Pace: ${currentPace}</div>
+                                <div class="first-pace">1H Pace: ${firstHalfPace}</div>
+                                <div class="odds-row">
+                                    <div><div class="label">1H O/U:</div><div class="value">${closingFirst}</div></div>
+                                    <div><div class="label">O/U:</div><div class="value">${closingLine}</div></div>
+                                    <div><div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
+                                </div>
+                            </div>`;
+                        } else {
+                            gameInfo = `<div class="game-details">
+                                <div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div>
+                                <div class="final">${half} | ${timeRemaining}</div>
+                                <div class="point-total">${totalPoints}</div>
+                                <div class="pace">Pace: ${currentPace}</div>
+                                <div class="odds-row">
+                                    <div><div class="label">1H O/U:</div><div class="value">${closingFirst}</div></div>
+                                    <div><div class="label">O/U:</div><div class="value">${closingLine}</div></div>
+                                    <div><div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
+                                </div>
+                            </div>`;
+
+                        }
                         document.getElementById("games").innerHTML += gameInfo;
                     }
                 });
