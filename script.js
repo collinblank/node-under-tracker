@@ -2,7 +2,7 @@ let halftimeScores = JSON.parse(localStorage.getItem('halftimeScores')) || {};
 
 function fetchLiveScores() {
     const url = "/scores";
-    
+
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -11,41 +11,60 @@ function fetchLiveScores() {
             return response.json();
         })
         .then(data => {
-            myObj = data.games;
+            let myObj = data.games;
             let bracketGames = myObj.filter(game => game.game.bracketRound != "");
-            bracketGames.sort((a, b) => {
-              const timeA = Number(a.game.startTimeEpoch) || 0;
-              const timeB = Number(b.game.startTimeEpoch) || 0;
-              return timeA - timeB;
-            });
-            bracketGames.forEach(game => {
-                let homeTeam = game.game.home.names.short;
-                let awayTeam = game.game.away.names.short;
-                let awayScore = game.game.away.score;
-                let homeScore = game.game.home.score;
-                let timeParts = game.game.contestClock.split(":");
-                let half = game.game.currentPeriod;
-                let live = game.game.gameState;
-                let totalPoints = Number(homeScore) + Number(awayScore);
-                let minutes = Number(timeParts[0]);
-                let seconds = Number(timeParts[1]);
-                let timeRemaining = game.game.contestClock;
-                let gameId = game.game.gameID;
-                let startTimeParts = game.game.startTime.split(":");
-                let startTime = Number(startTimeParts[0]) + ":" + startTimeParts[1];
 
-                fetchLiveLines(homeTeam)
-                .then(odds => {
-                    if(!odds.pregame_line) {
-                        return fetchLiveLines(awayTeam);
-                    }
-                    return odds;
+            console.log(bracketGames.map(g => ({
+                id: g.game.gameID,
+                epoch: g.game.startTimeEpoch,
+                type: typeof g.game.startTimeEpoch,
+                time: g.game.startTime
+            })));
+
+            bracketGames.sort((a, b) => {
+                const epochA = Number(a?.game?.startTimeEpoch) || 0;
+                const epochB = Number(b?.game?.startTimeEpoch) || 0;
+                return epochA - epochB;
+            });
+
+            // Fetch all lines first, then render in sorted order
+            Promise.all(
+                bracketGames.map(game => {
+                    let homeTeam = game.game.home.names.short;
+                    let awayTeam = game.game.away.names.short;
+
+                    return fetchLiveLines(homeTeam)
+                        .then(odds => {
+                            if (!odds.pregame_line) return fetchLiveLines(awayTeam);
+                            return odds;
+                        })
+                        .then(odds => ({ game, odds }))
+                        .catch(() => ({ game, odds: {} })); // don't let one failure break all games
                 })
-                .then(odds=> {
+            )
+            .then(results => {
+                results.forEach(({ game, odds }) => {
+                    let homeTeam = game.game.home.names.short;
+                    let awayTeam = game.game.away.names.short;
+                    let awayScore = game.game.away.score;
+                    let homeScore = game.game.home.score;
+                    let timeParts = game.game.contestClock.split(":");
+                    let half = game.game.currentPeriod;
+                    let live = game.game.gameState;
+                    let totalPoints = Number(homeScore) + Number(awayScore);
+                    let minutes = Number(timeParts[0]);
+                    let seconds = Number(timeParts[1]);
+                    let timeRemaining = game.game.contestClock;
+                    let gameId = game.game.gameID;
+                    let startTimeParts = game.game.startTime.split(":");
+                    let startTime = Number(startTimeParts[0]) + ":" + startTimeParts[1];
+
                     let closingLine = odds.pregame_line || "N/A";
                     let closingSpread = odds.pregame_spread || "N/A";
                     let closingFirst = odds.first_half_line || "N/A";
+
                     let gameInfo;
+
                     if (live == "final") {
                         gameInfo = `<div class="game-details" id="${gameId}">
                                         <div class="game-matchup">
@@ -63,11 +82,12 @@ function fetchLiveScores() {
                                         </div>
                                     </div>`;
                         document.getElementById("finals").innerHTML += gameInfo;
-                        if (closingLine > totalPoints){
+                        if (closingLine > totalPoints) {
                             document.getElementById(`${gameId}`).classList.add("win");
                         } else {
-                            document.getElementById(`${gameId}`).classList.add("loss")
+                            document.getElementById(`${gameId}`).classList.add("loss");
                         }
+
                     } else if (live == "pre") {
                         gameInfo = `<div class="game-details">
                                         <div class="game-matchup">
@@ -84,8 +104,8 @@ function fetchLiveScores() {
                                         </div>
                                     </div>`;
                         document.getElementById("not-started").innerHTML += gameInfo;
+
                     } else if (!half || half === "HALFTIME") {
-                        // Halftime or no half detected → treat as halftime
                         halftimeScores[gameId] = totalPoints;
                         localStorage.setItem('halftimeScores', JSON.stringify(halftimeScores));
                         let currentPace = (totalPoints * 2).toFixed(2);
@@ -104,19 +124,18 @@ function fetchLiveScores() {
                         document.getElementById("games").innerHTML += gameInfo;
 
                     } else {
-                        // Live game (1st or 2nd with time remaining)
+                        // Live game (1st or 2nd half with time remaining)
                         if (half === "1st") {
-                            halftimeScores[gameId] = totalPoints;  // Update continuously during 1H
+                            halftimeScores[gameId] = totalPoints;
                             localStorage.setItem('halftimeScores', JSON.stringify(halftimeScores));
                         }
-                        // In 2nd, keep whatever was saved at end of 1H
                         let timeLeft = minutes + seconds / 60;
                         let timePlayed = (half === "1st") ? 20 - timeLeft : 40 - timeLeft;
                         let averagePerMinute = timePlayed > 0 ? totalPoints / timePlayed : 0;
                         let currentPace = (averagePerMinute * 40).toFixed(2);
-                        let firstHalfPoints = halftimeScores[gameId] ?? totalPoints;  // fallback
+                        let firstHalfPoints = halftimeScores[gameId] ?? totalPoints;
                         let firstHalfPace = firstHalfPoints.toFixed(0);
-                    
+
                         gameInfo = `<div class="game-details">
                             <div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div>
                             <div class="final">${half} | ${timeRemaining}</div>
@@ -125,17 +144,16 @@ function fetchLiveScores() {
                             <div class="first-pace">1H Pace: ${firstHalfPace}</div>
                             <div class="odds-row">
                                 <div><div class="label">1H O/U:</div><div class="value">${closingFirst}</div></div>
-                                <div><div class="label">O/U:</div><div class="value">${closingLine}</div></div><div>
-                                <div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
+                                <div><div class="label">O/U:</div><div class="value">${closingLine}</div></div>
+                                <div><div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
                             </div>
                         </div>`;
                         document.getElementById("games").innerHTML += gameInfo;
                     }
-                }).catch(error => {
-                    console.error(`Error fetching lines for ${homeTeam}:`, error);
-                    let gameInfo = `<div class="game-details"><div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div><div class="final">${half || live}</div><div class="totalPoints">${totalPoints}</div></div>`;
-                    document.getElementById("games").innerHTML += gameInfo;
                 });
+            })
+            .catch(error => {
+                console.error("Error rendering games:", error);
             });
         })
         .catch(error => {
@@ -144,7 +162,7 @@ function fetchLiveScores() {
 }
 
 function fetchLiveLines(shortName) {
-    return fetch(`/closing-lines?team=${encodeURIComponent(shortName)}`) 
+    return fetch(`/closing-lines?team=${encodeURIComponent(shortName)}`)
         .then(response => {
             if (!response.ok) throw new Error("Failed to fetch saved odds");
             return response.json();
