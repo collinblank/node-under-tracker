@@ -1,4 +1,5 @@
 let halftimeScores = JSON.parse(localStorage.getItem('halftimeScores')) || {};
+let pollingInterval = null;
 
 function fetchLiveScores() {
     const url = "/scores";
@@ -39,10 +40,17 @@ function fetchLiveScores() {
                             return odds;
                         })
                         .then(odds => ({ game, odds }))
-                        .catch(() => ({ game, odds: {} })); // don't let one failure break all games
+                        .catch(() => ({ game, odds: {} }));
                 })
             )
             .then(results => {
+                // Build all three sections as HTML strings first,
+                // then swap them in one shot — no flicker, no partial renders
+                let gamesHTML = "";
+                let finalsHTML = "";
+                let notStartedHTML = "";
+                let finalClasses = {}; // track win/loss classes to apply after swap
+
                 results.forEach(({ game, odds }) => {
                     let homeTeam = game.game.home.names.short;
                     let awayTeam = game.game.away.names.short;
@@ -81,12 +89,8 @@ function fetchLiveScores() {
                                             <div><div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
                                         </div>
                                     </div>`;
-                        document.getElementById("finals").innerHTML += gameInfo;
-                        if (closingLine > totalPoints) {
-                            document.getElementById(`${gameId}`).classList.add("win");
-                        } else {
-                            document.getElementById(`${gameId}`).classList.add("loss");
-                        }
+                        finalsHTML += gameInfo;
+                        finalClasses[gameId] = closingLine > totalPoints ? "win" : "loss";
 
                     } else if (live == "pre") {
                         gameInfo = `<div class="game-details">
@@ -103,7 +107,7 @@ function fetchLiveScores() {
                                             <div><div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
                                         </div>
                                     </div>`;
-                        document.getElementById("not-started").innerHTML += gameInfo;
+                        notStartedHTML += gameInfo;
 
                     } else if (!half || half === "HALFTIME") {
                         halftimeScores[gameId] = totalPoints;
@@ -121,7 +125,7 @@ function fetchLiveScores() {
                                 <div><div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
                             </div>
                         </div>`;
-                        document.getElementById("games").innerHTML += gameInfo;
+                        gamesHTML += gameInfo;
 
                     } else {
                         // Live game (1st or 2nd half with time remaining)
@@ -135,7 +139,7 @@ function fetchLiveScores() {
                         let currentPace = (averagePerMinute * 40).toFixed(2);
                         let firstHalfPace = (averagePerMinute * 20).toFixed(2);
 
-                        if (half === "1st"){
+                        if (half === "1st") {
                             gameInfo = `<div class="game-details">
                                 <div class="game-matchup"><div class="home-team">${homeTeam}</div><div class="score">${homeScore}</div><div class="away-team">${awayTeam}</div><div class="score">${awayScore}</div></div>
                                 <div class="final">${half} | ${timeRemaining}</div>
@@ -160,10 +164,20 @@ function fetchLiveScores() {
                                     <div><div class="label">Spread:</div><div class="value" id="spread">${closingSpread}</div></div>
                                 </div>
                             </div>`;
-
                         }
-                        document.getElementById("games").innerHTML += gameInfo;
+                        gamesHTML += gameInfo;
                     }
+                });
+
+                // Swap all three containers at once — seamless, no partial flicker
+                document.getElementById("games").innerHTML = gamesHTML;
+                document.getElementById("finals").innerHTML = finalsHTML;
+                document.getElementById("not-started").innerHTML = notStartedHTML;
+
+                // Apply win/loss classes now that the DOM is updated
+                Object.entries(finalClasses).forEach(([id, cls]) => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add(cls);
                 });
             })
             .catch(error => {
@@ -183,3 +197,14 @@ function fetchLiveLines(shortName) {
         })
         .then(odds => odds);
 }
+
+// Run immediately on load
+fetchLiveScores();
+
+// Poll every 30 seconds, but pause when the tab is hidden
+// so we're not hammering the API while nobody's watching
+pollingInterval = setInterval(() => {
+    if (!document.hidden) {
+        fetchLiveScores();
+    }
+}, 15000);
