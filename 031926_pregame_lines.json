@@ -1,0 +1,72 @@
+[
+  {
+    "home_team": "Kentucky",
+    "away_team": "Santa Clara",
+    "pregame_line": 150.5,
+    "pregame_spread": "Kentucky -2.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Texas Tech",
+    "away_team": "Akron",
+    "pregame_line": 150.5,
+    "pregame_spread": "Texas Tech -7.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Arizona",
+    "away_team": "LIU",
+    "pregame_line": 150.5,
+    "pregame_spread": "Arizona -30.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Virginia",
+    "away_team": "Wright State",
+    "pregame_line": 140.5,
+    "pregame_spread": "Virginia -12.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Iowa State",
+    "away_team": "Tennessee State",
+    "pregame_line": 145.5,
+    "pregame_spread": "Iowa State -24.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Alabama",
+    "away_team": "Hofstra",
+    "pregame_line": 165.5,
+    "pregame_spread": "Alabama -18.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Villanova",
+    "away_team": "Northern Iowa",
+    "pregame_line": 140.5,
+    "pregame_spread": "Villanova -10.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "UCLA",
+    "away_team": "UCF",
+    "pregame_line": 145.5,
+    "pregame_spread": "UCLA -5.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "St. John's",
+    "away_team": "Northern Iowa",
+    "pregame_line": 130.5,
+    "pregame_spread": "St. John's -9.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Kansas",
+    "away_team": "Cal Baptist",
+    "pregame_line": 134.5,
+    "pregame_spread": "Kansas -14.5",
+    "first_half_line": 0
+  }
+]

@@ -107,11 +107,35 @@ body {
 
 .odds-row {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    gap: 15px;
     font-size: 0.9em;
+    color: #333;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.odds-row > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    text-align: center;
+}
+
+.odds-row .label {
+    font-size: 0.8em;
     color: #555;
-    margin-top: 1em;
+    margin-bottom: 4px;
+    font-weight: normal;
+}
+
+.odds-row .value {
+    font-size: 1.1em;
+}
+
+.odds-row #spread {
+    font-size: .75em;
 }
 
 .header{

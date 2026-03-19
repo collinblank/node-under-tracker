@@ -1,16 +1,114 @@
 [
   {
-    "home_team": "Lehigh",
-    "away_team": "Prairie View",
-    "pregame_line": 142.5,
-    "pregame_spread": "Lehigh -3.5",
-    "first_half_line": "65.5"
+    "home_team": "Michigan",
+    "away_team": "Howard",
+    "pregame_line": 151.5,
+    "pregame_spread": "Michigan -31.5",
+    "first_half_line": 0
   },
   {
-    "home_team": "SMU",
-    "away_team": "Miami (OH)",
+    "home_team": "Vanderbilt",
+    "away_team": "McNeese",
+    "pregame_line": 150.5,
+    "pregame_spread": "Vanderbilt -11.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Saint Mary's (CA)",
+    "away_team": "Texas A&M",
+    "pregame_line": 146.5,
+    "pregame_spread": "Saint Mary's -3.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Nebraska",
+    "away_team": "Troy",
+    "pregame_line": 136.5,
+    "pregame_spread": "Nebraska -13.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Wisconsin",
+    "away_team": "High Point",
     "pregame_line": 163.5,
-    "pregame_spread": "MIAOH +7.5",
-    "first_half_line": "75.5"
+    "pregame_spread": "Wisconsin -9.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Illinois",
+    "away_team": "Penn",
+    "pregame_line": 150.5,
+    "pregame_spread": "Illinois -24.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Louisville",
+    "away_team": "South Fla.",
+    "pregame_line": 164.5,
+    "pregame_spread": "Louisville -5.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Georgia",
+    "away_team": "Saint Louis",
+    "pregame_line": 0,
+    "pregame_spread": "",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "BYU",
+    "away_team": "Texas",
+    "pregame_line": 157.5,
+    "pregame_spread": "BYU -2.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Ohio St.",
+    "away_team": "TCU",
+    "pregame_line": 146.5,
+    "pregame_spread": "Ohio St. -2.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Arkansas",
+    "away_team": "Hawaii",
+    "pregame_line": 159.5,
+    "pregame_spread": "Arkansas -15.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Gonzaga",
+    "away_team": "Kennesaw St.",
+    "pregame_line": 154.5,
+    "pregame_spread": "Gonzaga -20.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Houston",
+    "away_team": "Idaho",
+    "pregame_line": 136.5,
+    "pregame_spread": "Houston -23.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Michigan St.",
+    "away_team": "North Dakota St.",
+    "pregame_line": 143.5,
+    "pregame_spread": "Michigan St. -20",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "Duke",
+    "away_team": "Siena",
+    "pregame_line": 135.5,
+    "pregame_spread": "Duke -28.5",
+    "first_half_line": 0
+  },
+  {
+    "home_team": "North Carolina",
+    "away_team": "VCU",
+    "pregame_line": 152.5,
+    "pregame_spread": "North Carolina -2.5",
+    "first_half_line": 0
   }
 ]
