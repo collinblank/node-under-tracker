@@ -15,13 +15,6 @@ function fetchLiveScores() {
             let myObj = data.games;
             let bracketGames = myObj.filter(game => game.game.bracketRound != "");
 
-            console.log(bracketGames.map(g => ({
-                id: g.game.gameID,
-                epoch: g.game.startTimeEpoch,
-                type: typeof g.game.startTimeEpoch,
-                time: g.game.startTime
-            })));
-
             bracketGames.sort((a, b) => {
                 const epochA = Number(a?.game?.startTimeEpoch) || 0;
                 const epochB = Number(b?.game?.startTimeEpoch) || 0;
